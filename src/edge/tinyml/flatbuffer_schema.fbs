@@ -1,0 +1,24 @@
+// Basic Schema for FlatBuffers
+
+namespace MyGame.Sample;
+
+enum Color:byte { Red = 0, Green, Blue = 2 }
+
+union Equipment { Weapon } # add more union types
+
+struct Vec3 {
+  x:float;
+  y:float;
+  z:float;
+}
+
+table Monster {
+  pos:Vec3;
+  input:short = 150;
+  name:string;
+  color:Color = Blue;
+  inventory:[ubyte];
+}
+
+root_type Monster;
+
