@@ -1,0 +1,40 @@
+# Introduction to Machine Learning System Design
+
+## The Gap Between Algorithms and Systems
+
+Traditional machine learning education focuses heavily on **algorithms**: how to minimize a loss function, how backpropagation works, or how to tune hyperparameters for a Random Forest. However, in a production setting, the algorithm is merely a small component of a much larger ecosystem. 
+
+**ML System Design** is the discipline of defining the architecture, interfaces, and data flows that enable ML models to run reliably, scalably, and maintainably in the real world.
+
+### Key differences between Research and Production
+
+| Feature | Research / Academia | Production ML Systems |
+| :--- | :--- | :--- |
+| **Goal** | State-of-the-art accuracy | Business value, reliability, latency |
+| **Data** | Static, clean datasets (CSV) | Dynamic, noisy streams, complex schemas |
+| **Compute** | High-end GPU clusters (batch) | Cost-optimized, often constrained (real-time) |
+| **Lifecycle** | Train once, publish paper | Continuous retraining, monitoring, rollback |
+| **Code** | Jupyter notebooks, scripts | Modular pipelines, tests, CI/CD |
+
+## Component-Level View
+
+A robust ML system is composed of several distinct functional areas that must integrate seamlessly:
+
+1.  **Data Layer**: Ingestion, validation, feature engineering, and storage (Feature Stores).
+2.  **Compute Layer**: Orchestration of resource-intensive tasks (Training, Bulk Inference).
+3.  **Model Management**: Versioning, metadata tracking, and artifact storage (Model Registry).
+4.  **Serving Layer**: Exposing models as APIs or embedding them in devices.
+5.  **Observability**: Monitoring data drift, concept drift, and system health.
+
+## The "Hidden Technical Debt" of ML Systems
+
+In 2015, Google published a famous paper titled *"Hidden Technical Debt in Machine Learning Systems"*. It highlighted that in many mature ML systems, the actual ML code is less than 5% of the total codebase. The rest is **glue code**—ingestion, configuration, extraction, verification, resource management, and serving infrastructure.
+
+### Design Principles for this Course
+
+In this project, we will build a system that prioritizes:
+1.  **Modularity**: Components (like a logical Feature Store) should be swappable.
+2.  **Reproducibility**: Every model artifact should be traceable back to exact code and data versions.
+3.  **Scalability**: The system should handle increasing data volumes without code rewrites.
+4.  **Automation**: Manual steps should be eliminated via orchestrators and CI/CD.
+
