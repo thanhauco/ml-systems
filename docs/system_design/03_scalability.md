@@ -1,0 +1,47 @@
+# Scalability Deep Dive: Patterns & Anti-Patterns
+
+## The Dimensions of Scalability in ML
+Scaling an ML system isn't just about handling more Requests Per Second (RPS). We must scale across three axes:
+
+1.  **Data Volume**: From GBs to PBs.
+2.  **Model Complexity**: From Linear Regression to Transformers.
+3.  **Traffic/Request Volume**: From 10 RPS to 100k RPS.
+
+## 1. Scaling Data Processing
+### Batch (MapReduce / Spark)
+-   **Pattern**: Break data into chunks (partitions). Process in parallel.
+-   **Bottleneck**: Shuffle phases (moving data between nodes).
+-   **Fix**: Optimize partitioning keys to minimize shuffle.
+
+### Stream (Flink / Kafka)
+-   **Pattern**: Event-at-a-time processing.
+-   **Bottleneck**: State management (e.g., counting windowed aggregates).
+-   **Fix**: External state stores (RocksDB) and careful checkpointing.
+
+## 2. Scaling Model Training
+### Data Parallelism
+-   Copy the model to N workers.
+-   Split data into N chunks.
+-   workers compute gradients independently.
+-   **All-Reduce**: Average gradients and update all models.
+-   *Standard for most Deep Learning.*
+
+### Model Parallelism
+-   Model is too big for one GPU.
+-   Split layers across GPUs (Pipeline Parallelism) or split tensors (Tensor Parallelism).
+-   *Required for LLMs.*
+
+## 3. Scaling Inference
+### Statelessness
+Inference services should be stateless. The model weights are "state", but they are read-only during inference.
+-   **Pattern**: Load model from object storage (S3) on startup.
+-   **Anti-Pattern**: Dynamic in-memory state that depends on user session (makes routing sticky and complex).
+
+### Caching
+-   **Prediction Cache**: If `model(input_A)` is meant to be deterministic, cache the result. Use Redis/Memcached.
+-   **Feature Cache**: Pre-compute features and store in low-latency store (DynamoDB/Redis) to avoid computing during request.
+
+## Load Balancing Strategies
+-   **Round Robin**: Simple, fair.
+-   **Least Outstanding Requests**: Better for ML models where inference time varies by input length (e.g., NLP).
+-   **Hardware-aware**: Route requests to GPU nodes vs CPU nodes based on availability.
