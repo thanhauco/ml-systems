@@ -28,3 +28,4 @@ if __name__ == "__main__":
     if not smoke_test_endpoint("http://localhost:8000"):
         sys.exit(1)
 
+
