@@ -29,3 +29,4 @@ class PipelineIntegrationTest:
 if __name__ == "__main__":
     t = PipelineIntegrationTest()
     t.test_full_cycle()
+
