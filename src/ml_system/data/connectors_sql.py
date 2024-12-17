@@ -29,3 +29,4 @@ class SQLConnector(BaseConnector):
     def write_batch(self, data: List[Dict[str, Any]], table: str):
         self.logger.info(f"Writing {len(data)} rows to table {table}")
         # Simulate Insert
+
