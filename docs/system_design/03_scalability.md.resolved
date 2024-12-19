@@ -46,3 +46,4 @@ Inference services should be stateless. The model weights are "state", but they 
 -   **Least Outstanding Requests**: Better for ML models where inference time varies by input length (e.g., NLP).
 -   **Hardware-aware**: Route requests to GPU nodes vs CPU nodes based on availability.
 
+
