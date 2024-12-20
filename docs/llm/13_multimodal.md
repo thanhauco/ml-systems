@@ -16,3 +16,4 @@ GPT-4V, Gemini, Claude 3. Can see images and hear audio.
 ## Challenges
 -   **Hallucination**: "I see a cat" when there is none.
 -   **Spatial Reasoning**: "Is the cup to the left or right?" (Often hard for standard LMMs).
+
