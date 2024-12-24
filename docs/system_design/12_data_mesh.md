@@ -33,3 +33,4 @@ Can we treat Models as Products?
 -   **Team A** builds "User Embedding Model". Exposes embeddings as a product.
 -   **Team B** builds "Recommendation Model". Consumes user embeddings from Team A.
 -   Decouples the teams. Team A can improve the embedding internally, as long as the API contract holds.
+
