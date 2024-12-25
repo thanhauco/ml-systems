@@ -40,3 +40,4 @@ if __name__ == "__main__":
     m = SimpleModel()
     ONNXExporter.export(m, (1, 10), "/tmp/model.onnx")
     ONNXExporter.verify("/tmp/model.onnx")
+
