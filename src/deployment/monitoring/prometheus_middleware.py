@@ -22,3 +22,4 @@ async def prometheus_middleware(request: Request, call_next):
 async def metrics_endpoint():
     return Response(generate_latest(), media_type="text/plain")
 
+
