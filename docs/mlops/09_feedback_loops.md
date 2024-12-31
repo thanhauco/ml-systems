@@ -14,3 +14,4 @@ You need a system to join Prediction ID with Outcome ID.
 -   **Log Payload**: `{"pred_id": "uuid", "input": "...", "score": 0.9}`.
 -   **Feedback Payload**: `{"pred_id": "uuid", "actual": 1}`.
 -   **Join**: Stream processing (Kappa architecture) or Batch nightly job.
+
