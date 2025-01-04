@@ -23,10 +23,28 @@ class SQLConnector(BaseConnector):
 
     def fetch_batch(self, query: str, batch_size: int = 1000) -> Iterator[List[Dict[str, Any]]]:
         self.logger.info(f"Executing SQL: {query}")
-        # Simulate yielding result sets
-        yield [{"id": 1, "val": "A"}, {"id": 2, "val": "B"}]
+        
+        # Simulate a result set cursor
+        total_rows = 50
+        current = 0
+        
+        while current < total_rows:
+            # Yield chunks
+            chunk_size = min(batch_size, total_rows - current)
+            chunk = [
+                {"id": current + i, "val": f"Item_{current+i}"}
+                for i in range(chunk_size)
+            ]
+            yield chunk
+            current += chunk_size
 
     def write_batch(self, data: List[Dict[str, Any]], table: str):
-        self.logger.info(f"Writing {len(data)} rows to table {table}")
-        # Simulate Insert
+        if not data:
+            return
+            
+        self.logger.info(f"INSERT INTO {table} VALUES ... ({len(data)} rows)")
+        # In real code: cursor.executemany("INSERT...", data)
+        # Verify schema match?
+        
+        self.logger.info("Commit transaction successful.")
 

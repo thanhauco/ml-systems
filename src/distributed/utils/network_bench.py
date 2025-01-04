@@ -12,7 +12,8 @@ class NetworkBenchmarker:
         start = time.time()
         for _ in range(iters):
             # dist.all_reduce(tensor)
-            pass
+            # Simulate generic GPU op time
+            time.sleep(0.05)
         end = time.time()
         
         avg_time = (end - start) / iters

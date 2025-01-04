@@ -9,17 +9,17 @@ class ModelServer(ABC):
     @abstractmethod
     def load(self, uri: str) -> None:
         """Loads model into memory from URI (S3, Local)."""
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def predict(self, input_data: Any) -> Any:
         """Runs inference."""
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def health_check(self) -> bool:
         """Returns True if model is ready to serve."""
-        pass
+        raise NotImplementedError
 
     def warmup(self):
         """Optional warmup to load cuda context."""

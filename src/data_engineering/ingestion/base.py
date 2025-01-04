@@ -9,19 +9,19 @@ class IngestionSource(ABC):
     @abstractmethod
     def connect(self):
         """Establish connection / session."""
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def disconnect(self):
         """Cleanup resources."""
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def read_stream(self) -> Iterator[Dict[str, Any]]:
         """Yields records potentially forever (blocking)."""
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def read_batch(self, filters: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Reads a finite set of records."""
-        pass
+        raise NotImplementedError

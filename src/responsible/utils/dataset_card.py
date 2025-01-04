@@ -13,5 +13,12 @@ class DatasetCardGenerator:
         return report
 
     def save_card(self, report, path="dataset_card.md"):
-        # Save as Markdown
-        pass
+        print(f"Saving dataset card to {path}...")
+        with open(path, "w") as f:
+            f.write("# Dataset Card\n\n")
+            f.write(f"**Rows**: {report.get('Rows')}\n")
+            f.write(f"**Columns**: {', '.join(report.get('Columns', []))}\n\n")
+            f.write("## Missing Values\n")
+            for col, count in report.get("Missing Values", {}).items():
+                f.write(f"- **{col}**: {count}\n")
+        print("Dataset Card saved.")

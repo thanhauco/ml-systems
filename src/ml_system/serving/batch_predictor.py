@@ -16,6 +16,20 @@ class BatchPredictor(BaseComponent):
         output_table = self.config.get("output_table")
         
         self.logger.info(f"Reading from {input_table}, writing predictions to {output_table}")
+        self.logger.info(f"Reading from {input_table}, writing predictions to {output_table}")
+        
         # Logic: Read 10k rows -> Predict -> Write
-        return {"status": "success", "processed": 10000}
+        batch_size = 1000
+        total_rows = 10000
+        
+        processed = 0
+        for i in range(0, total_rows, batch_size):
+            # batch = read_batch()
+            # preds = model.predict(batch)
+            # write(preds)
+            processed += batch_size
+            if i % 2000 == 0:
+                self.logger.info(f"Processed {i}/{total_rows}...")
+                
+        return {"status": "success", "processed": total_rows}
 

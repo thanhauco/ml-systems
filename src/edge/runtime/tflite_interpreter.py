@@ -8,15 +8,23 @@ class TFLitePredictor:
     
     def __init__(self, model_path: str, delegate: str = None):
         print(f"Loading TFLite model: {model_path}")
-        # self.interpreter = tflite.Interpreter(model_path=model_path)
-        # self.interpreter.allocate_tensors()
-        # self.input_details = self.interpreter.get_input_details()
-        # self.output_details = self.interpreter.get_output_details()
-        pass
+        if delegate:
+            print(f"Using delegate: {delegate}")
+        # Mock details
+        self.input_details = [{'index': 0, 'shape': [1, 224, 224, 3], 'dtype': np.float32}]
+        self.output_details = [{'index': 1, 'shape': [1, 1001], 'dtype': np.float32}]
 
     def predict(self, input_data: np.ndarray) -> np.ndarray:
+        # Check input shape
+        expected_shape = tuple(self.input_details[0]['shape'])
+        if input_data.shape != expected_shape:
+            # Handle loose mock check
+            pass
+            
+        print("Running TFLite inference...")
         # self.interpreter.set_tensor(self.input_details[0]['index'], input_data)
         # self.interpreter.invoke()
-        # output_data = self.interpreter.get_tensor(self.output_details[0]['index'])
-        # return output_data
-        return np.random.rand(1, 10) # Mock output
+        
+        # Mock output (e.g. ImageNet 1001 classes)
+        output_data = np.random.rand(*(self.output_details[0]['shape'])).astype(np.float32)
+        return output_data

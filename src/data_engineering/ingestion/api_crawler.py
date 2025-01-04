@@ -16,7 +16,7 @@ class AsyncAPICrawler(IngestionSource):
 
     def connect(self):
         # In real async app, session creation must happen in loop
-        pass
+        self.logger.info(f"Preparing crawler for {self.base_url}")
 
     async def _fetch(self, url: str) -> Dict[str, Any]:
         async with self.session.get(url) as response:

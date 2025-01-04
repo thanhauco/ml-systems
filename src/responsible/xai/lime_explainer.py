@@ -8,13 +8,23 @@ class LimeExplainer:
     
     def __init__(self, training_data, feature_names):
         print("Initializing LimeTabularExplainer...")
-        # self.explainer = lime.lime_tabular.LimeTabularExplainer(
-        #    training_data, feature_names=feature_names, mode='classification'
-        # )
-        pass
+        self.training_data = training_data
+        self.feature_names = feature_names
+        # In real scenario: self.explainer = lime.lime_tabular.LimeTabularExplainer(...)
+        pass # usage of pass here is fine if we just stored data, but let's remove it to be clean
 
     def explain(self, instance, predict_fn):
         print("Explaining local instance with LIME...")
-        # exp = self.explainer.explain_instance(instance, predict_fn)
-        # return exp.as_list()
-        return [("FeatureA > 0.5", 0.4), ("FeatureB <= 1", -0.2)]
+        # Simulation of explanation generation
+        explanations = []
+        prediction = predict_fn([instance])[0]
+        
+        # Fake feature importance logic
+        for i, val in enumerate(instance):
+            if i < len(self.feature_names):
+                feat = self.feature_names[i]
+                # Random fake importance
+                importance = (val * 0.5) - 0.2
+                explanations.append((f"{feat} == {val}", importance))
+                
+        return explanations

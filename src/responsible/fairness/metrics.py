@@ -6,15 +6,14 @@ class FairnessMetrics:
     """
     
     @staticmethod
-    def disparate_impact(y_pred: np.ndarray, sensitive_attr: np.ndarray):
+    def disparate_impact(y_pred: np.ndarray, sensitive_attribute: np.ndarray):
         """
-        Ratio of acceptance rates: P(Y=1|A=0) / P(Y=1|A=1)
+        DI = P(pred=1 | group=unpriv) / P(pred=1 | group=priv)
         Rule of Thumb: Should be between 0.8 and 1.25.
         """
         # A=1 Usually privileged group (e.g. Male)
         # A=0 Usually unprivileged (e.g. Female)
         
-        prob_unpriv = np.mean(y_pred[sensitive_attr == 0])
         prob_priv = np.mean(y_pred[sensitive_attr == 1])
         
         if prob_priv == 0: return 0.0

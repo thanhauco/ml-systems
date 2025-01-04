@@ -17,8 +17,8 @@ class DockerExecutor(Executor):
         self.image = image
 
     def run_command(self, cmd: str) -> int:
-        docker_cmd = f"docker run --rm {self.image} {cmd}"
-        print(f"[DockerExecutor] Running: {docker_cmd}")
-        # In reality, use docker sdk
+        docker_cmd = ["docker", "run", "--rm", self.image] + cmd.split()
+        print(f"[DockerExecutor] Running: {' '.join(docker_cmd)}")
+        # Simulate execution success
         return 0
 

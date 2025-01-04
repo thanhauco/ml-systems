@@ -28,7 +28,13 @@ class AlignmentVerifier:
 
 # Mock Reward Model
 def mock_rm(text):
-    return len(text) # Dummy proxy
+    # Simple keyword heuristic for demo
+    score = 0.0
+    if "Helpful" in text or "Truth" in text:
+        score += 1.0
+    if "Toxic" in text or "Lie" in text:
+        score -= 1.0
+    return score
 
 if __name__ == "__main__":
     v = AlignmentVerifier()

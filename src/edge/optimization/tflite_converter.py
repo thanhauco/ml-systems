@@ -34,5 +34,8 @@ class TFLiteConverterWrapper:
 # Generator Mock
 def representative_dataset():
     for _ in range(100):
+        # Simulate loading a batch of calibration data
         # yield [input_data]
-        pass
+        import numpy as np
+        fake_data = np.random.rand(1, 224, 224, 3).astype(np.float32)
+        yield [fake_data]

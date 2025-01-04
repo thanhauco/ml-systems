@@ -25,9 +25,42 @@ class TFIDFVectorizer:
         self.vocab = {}
 
     def fit(self, documents: List[str]):
-        # Calculate IDF...
-        pass
+        doc_count = len(documents)
+        term_counts = {}
+        
+        for doc in documents:
+            words = set(doc.split())
+            for word in words:
+                term_counts[word] = term_counts.get(word, 0) + 1
+        
+        # IDF = log(N / (df + 1))
+        import math
+        self.idf = {word: math.log(doc_count / (count + 1)) for word, count in term_counts.items()}
+        self.vocab = {word: i for i, word in enumerate(self.idf.keys())}
+        print(f"Fitted TF-IDF on {len(self.vocab)} terms.")
 
     def transform(self, documents: List[str]) -> List[List[float]]:
-        # Calculate TF * IDF...
-        return []
+        vectors = []
+        vocab_len = len(self.vocab)
+        
+        for doc in documents:
+            vec = [0.0] * vocab_len
+            words = doc.split()
+            word_count = len(words)
+            if word_count == 0:
+                vectors.append(vec)
+                continue
+                
+            # Access by index for speed (mock)
+            tf = {}
+            for w in words:
+                tf[w] = tf.get(w, 0) + 1
+            
+            for word, count in tf.items():
+                if word in self.vocab:
+                    idx = self.vocab[word]
+                    # TF * IDF
+                    vec[idx] = (count / word_count) * self.idf[word]
+            
+            vectors.append(vec)
+        return vectors

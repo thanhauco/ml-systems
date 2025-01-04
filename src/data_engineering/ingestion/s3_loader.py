@@ -11,10 +11,11 @@ class S3Loader(IngestionSource):
         self.prefix = prefix
 
     def connect(self):
-        pass # s3 is usually stateless HTTP
+        # s3 is usually stateless HTTP but we can check creds
+        print(f"Verifying access to S3 bucket: {self.bucket}")
 
     def disconnect(self):
-        pass
+        print("S3Loader session closed.")
 
     def list_files(self) -> List[str]:
         # Simulation

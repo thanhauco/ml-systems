@@ -1,3 +1,4 @@
+```python
 class ComplianceChecklist:
     """
     Automated checks for Model Governance.
@@ -5,6 +6,23 @@ class ComplianceChecklist:
     
     def __init__(self, model_card_path):
         self.path = model_card_path
+        self.required_items = ["owner", "license", "ethical_risks", "fairness_tests"]
+
+    def verify(self, model_card: dict) -> bool:
+        """
+        Checks if the model card contains all required sections.
+        """
+        missing = []
+        for item in self.required_items:
+            if item not in model_card:
+                missing.append(item)
+        
+        if missing:
+            print(f"Compliance Check Failed. Missing: {missing}")
+            return False
+            
+        print("Compliance Check Passed.")
+        return True
 
     def run_checks(self):
         print(f"Auditing {self.path}...")

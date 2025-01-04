@@ -43,4 +43,4 @@ class BaseComponent(ABC):
         """Main execution entrypoint."""
         if self._state != "ready":
              raise RuntimeError(f"Component {self.name} is not ready. State: {self._state}")
-        pass
+        raise NotImplementedError("Subclasses must implement execute()")

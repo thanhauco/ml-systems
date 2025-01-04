@@ -13,12 +13,14 @@ class PipelineStage:
         if not self.is_first:
             # batch = recv_from(self.stage_id - 1)
             print("Recv activations from prev stage")
-            pass
+            # Simulating data receipt
+            batch = {"data": "activations_from_prev_stage"}
             
         output = self.model(batch) if batch else "Forward"
         
         if not self.is_last:
             # send_to(self.stage_id + 1, output)
-            print("Send activations to next stage")
+            print(f"Send activations to next stage: {self.stage_id + 1}")
+            # Logic to actually put data on wire would go here
             
         return output
