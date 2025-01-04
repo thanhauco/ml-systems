@@ -1,4 +1,4 @@
-# ML Systems Textbook (Theory & Code)
+# ML Systems (Theory & Code)
 
 A comprehensive, modular resource for mastering modern Machine Learning Systems. This repository bridges the gap between theoretical textbooks and production-grade engineering.
 
