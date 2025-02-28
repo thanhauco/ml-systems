@@ -31,6 +31,8 @@ The project is organized into 10 modular topics. Each topic contains a dedicated
 | **8. Scaling ML** | `docs/scaling/` | `src/scaling/` | Infrastructure as Code (Terraform), Slurm, Ray Clusters. |
 | **9. Distributed Training** | `docs/distributed/` | `src/distributed/` | DDP, FSDP, 3D Parallelism (Data/Tensor/Pipeline). |
 | **10. Multimodal** | `docs/multimodal/` | `src/multimodal/` | Diffusion Models, Vision Transformers (ViT), CLIP alignment. |
+| **11. Reasoning Models** | `docs/reasoning/` | `src/reasoning/` | System 2, Tree-of-Thoughts (ToT), Chain-of-Thought (CoT). |
+| **12. Autonomous Swarms** | `docs/agents/` | `src/agents/` | Multi-Agent Orchestration, Hierarchical Planning, Actor Model. |
 
 ## 🛠️ Getting Started
 
@@ -70,6 +72,12 @@ python src/edge/runtime/edge_inference_loop.py
 Execute a Text-to-Image pipeline mockup:
 ```bash
 python src/multimodal/pipelines/txt2img.py
+```
+
+**5. Autonomous Swarm Mission (Topic 12)**
+Initialize a multi-agent swarm to solve a hierarchical task:
+```bash
+python src/agents/swarm_orchestrator.py
 ```
 
 ## 📝 License
