@@ -1,4 +1,4 @@
-# ML Systems Textbook: Theory & Code
+# ML Systems: Theory & Code
 > *From Principles to Production: A Comprehensive Engineering Resource*
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -33,6 +33,8 @@ The project is organized into 10 modular topics. Each topic contains a dedicated
 | **10. Multimodal** | `docs/multimodal/` | `src/multimodal/` | Diffusion Models, Vision Transformers (ViT), CLIP alignment. |
 | **11. Reasoning Models** | `docs/reasoning/` | `src/reasoning/` | System 2, Tree-of-Thoughts (ToT), Chain-of-Thought (CoT). |
 | **12. Autonomous Swarms** | `docs/agents/` | `src/agents/` | Multi-Agent Orchestration, Hierarchical Planning, Actor Model. |
+| **13. High-Performance Serving** | `docs/serving_optimization/` | `src/serving_optimization/` | vLLM, PagedAttention, Continuous Batching. |
+| **14. Distributed Orchestration** | `docs/distributed_ray/` | `src/distributed_ray/` | Ray Clusters, Global Control Store, Parameter Server. |
 
 ## 🛠️ Getting Started
 
@@ -78,6 +80,21 @@ python src/multimodal/pipelines/txt2img.py
 Initialize a multi-agent swarm to solve a hierarchical task:
 ```bash
 python src/agents/swarm_orchestrator.py
+```
+
+python src/agents/swarm_orchestrator.py
+```
+
+**6. vLLM Engine Simulation (Topic 13)**
+Run a continuous batching scheduler loop:
+```bash
+python src/serving_optimization/vllm_lite.py
+```
+
+**7. Distributed Ray Job (Topic 14)**
+Launch a simulated cluster and run a parameter server training job:
+```bash
+python src/distributed_ray/distributed_trainer.py
 ```
 
 ## 📝 License
