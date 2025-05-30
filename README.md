@@ -97,5 +97,14 @@ Launch a simulated cluster and run a parameter server training job:
 python src/distributed_ray/distributed_trainer.py
 ```
 
+## 📓 Notebooks (Capstone Projects)
+Three "Big Projects" are provided in the `notebooks/` directory to demonstrate end-to-end workflows:
+
+| Notebook | Focus | Key Integrations |
+|----------|-------|------------------|
+| **01 The Brain** | Enterprise RAG | `src/data_engineering` + `src/reasoning` |
+| **02 The Forge** | Distributed Factory | `src/distributed_ray` + `src/serving_optimization` |
+| **03 The Studio** | Creative Agency | `src/multimodal` + `src/agents` |
+
 ## 📝 License
 MIT License.
