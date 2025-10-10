@@ -39,6 +39,8 @@ The project is organized into 10 modular topics. Each topic contains a dedicated
 | **16. ML Security** | `docs/security/` | `src/security/` | Adversarial Training, Model Watermarking, Poisoning Detection. |
 | **17. Feature Store** | `docs/feature_store/` | `src/feature_store/` | Offline/Online Store, Point-in-Time Correctness, Feature Registry. |
 | **18. MLOps Monitoring** | `docs/monitoring/` | `src/monitoring/` | Drift Detection (KS-Test), Alerting Policies, Incident Response. |
+| **19. Green AI** | `docs/green_ai/` | `src/green_ai/` | Carbon-Aware Scheduling, Energy Proportionality. |
+| **20. Neuromorphic Computing** | `docs/neuromorphic/` | `src/neuromorphic/` | Spiking Neural Networks (SNN), Event-Based Vision. |
 
 ## 🛠️ Getting Started
 
@@ -123,6 +125,18 @@ python src/feature_store/offline_store.py
 Trigger a simulated P1 alert for drift:
 ```bash
 python src/monitoring/alert_manager.py
+```
+
+**12. Green AI Scheduler (Topic 19)**
+Launch a carbon-aware job queue simulation:
+```bash
+python src/green_ai/scheduler.py
+```
+
+**13. Spiking Neuron (Topic 20)**
+Simulate a LIF neuron reacting to an input current:
+```bash
+python src/neuromorphic/spiking_neuron.py
 ```
 
 ## 📓 Notebooks (Capstone Projects)
