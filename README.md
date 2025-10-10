@@ -35,6 +35,10 @@ The project is organized into 10 modular topics. Each topic contains a dedicated
 | **12. Autonomous Swarms** | `docs/agents/` | `src/agents/` | Multi-Agent Orchestration, Hierarchical Planning, Actor Model. |
 | **13. High-Performance Serving** | `docs/serving_optimization/` | `src/serving_optimization/` | vLLM, PagedAttention, Continuous Batching. |
 | **14. Distributed Orchestration** | `docs/distributed_ray/` | `src/distributed_ray/` | Ray Clusters, Global Control Store, Parameter Server. |
+| **15. Advanced Optimization** | `docs/optimization/` | `src/optimization/` | ZeRO-3, FlashAttention, Gradient Partitioning. |
+| **16. ML Security** | `docs/security/` | `src/security/` | Adversarial Training, Model Watermarking, Poisoning Detection. |
+| **17. Feature Store** | `docs/feature_store/` | `src/feature_store/` | Offline/Online Store, Point-in-Time Correctness, Feature Registry. |
+| **18. MLOps Monitoring** | `docs/monitoring/` | `src/monitoring/` | Drift Detection (KS-Test), Alerting Policies, Incident Response. |
 
 ## 🛠️ Getting Started
 
@@ -95,6 +99,30 @@ python src/serving_optimization/vllm_lite.py
 Launch a simulated cluster and run a parameter server training job:
 ```bash
 python src/distributed_ray/distributed_trainer.py
+```
+
+**8. ZeRO Optimizer Simulation (Topic 15)**
+Run a sharded data parallel training step with ZeRO-3:
+```bash
+python src/optimization/zero_optimizer.py
+```
+
+**9. Security Audit (Topic 16)**
+Scan data sources for poisoning attacks:
+```bash
+python src/security/poison_detector.py
+```
+
+**10. Feature Retrieval (Topic 17)**
+Fetch historical features with point-in-time correctness:
+```bash
+python src/feature_store/offline_store.py
+```
+
+**11. Production Monitoring (Topic 18)**
+Trigger a simulated P1 alert for drift:
+```bash
+python src/monitoring/alert_manager.py
 ```
 
 ## 📓 Notebooks (Capstone Projects)
