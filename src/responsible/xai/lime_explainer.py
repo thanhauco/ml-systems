@@ -11,7 +11,6 @@ class LimeExplainer:
         self.training_data = training_data
         self.feature_names = feature_names
         # In real scenario: self.explainer = lime.lime_tabular.LimeTabularExplainer(...)
-        pass # usage of pass here is fine if we just stored data, but let's remove it to be clean
 
     def explain(self, instance, predict_fn):
         print("Explaining local instance with LIME...")

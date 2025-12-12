@@ -53,7 +53,12 @@ class RayMock:
                     if isinstance(func_or_class, type):
                         # Method call on actor logic is complex to mock purely with decorators
                         # verifying this later
-                        pass
+                        # For simulation, we assume logic is handled by the proxy or we invoke directly if possible
+                        # But since 'func_or_class' is the class type here, and we don't have the instance easily in this scope 
+                        # without more complex state management.
+                        # We will log a warning and return DUMMY.
+                        print(f"Warning: Mock Actor task execution not fully simulated for {func_or_class}")
+                        return "MOCK_ACTOR_RESULT"
                     return self._func(*args, **kwargs)
 
                 future = RayMock._executor.submit(task)

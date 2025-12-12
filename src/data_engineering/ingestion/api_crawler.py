@@ -42,4 +42,5 @@ class AsyncAPICrawler(IngestionSource):
         raise NotImplementedError("Crawler is batch only")
     
     def disconnect(self):
-        pass
+        if self.session:
+            print(f"Crawler disconnected from {self.base_url}")
